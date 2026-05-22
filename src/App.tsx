@@ -1,24 +1,36 @@
+import { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
-import "./global.css";
 
+import "./global.css";
 import { albums } from "./data/albums";
 import { songs } from "./data/songs";
-
 import AlbumCard from "./components/AlbumCard";
 import MusicCard from "./components/MusicCard";
 import Quiz from "./components/Quiz";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="header">
       <h1>Michael Jackson</h1>
 
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/musicas">Músicas</NavLink>
-        <NavLink to="/albums">Álbuns</NavLink>
-        <NavLink to="/quiz">Quiz</NavLink>
-        <NavLink to="/sobre">Sobre</NavLink>
+      <button
+        className="menu-button"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Abrir menu"
+      >
+        ☰
+      </button>
+
+      <nav className={menuOpen ? "nav nav-open" : "nav"}>
+        <NavLink to="/" onClick={closeMenu}>Home</NavLink>
+        <NavLink to="/musicas" onClick={closeMenu}>Músicas</NavLink>
+        <NavLink to="/albums" onClick={closeMenu}>Álbuns</NavLink>
+        <NavLink to="/quiz" onClick={closeMenu}>Quiz</NavLink>
+        <NavLink to="/sobre" onClick={closeMenu}>Sobre</NavLink>
       </nav>
     </header>
   );
@@ -220,12 +232,12 @@ function Sobre() {
 
 function Footer() {
   return (
-  <footer className="footer">
-    <img
-      src="./src/assets/assinatura.png"
-      alt="Assinatura"
-      className="signature"
-    />
+ <footer className="footer">
+  <img
+    src="/assinatura.png"
+    alt="Assinatura"
+    className="signature"
+  />
 
     <p>King of Pop — Para sempre na história da música.</p>
   </footer>
