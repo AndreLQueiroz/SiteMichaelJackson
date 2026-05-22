@@ -1,0 +1,64 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 60px;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+  color: gold;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 28px;
+}
+
+.navbar a {
+  position: relative;
+
+  text-decoration: none;
+  color: white;
+
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+
+.navbar a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0%;
+  height: 2px;
+
+  background: gold;
+
+  transition: 0.3s;
+}
+
+.navbar a:hover::after,
+.navbar .active::after {
+  width: 100%;
+}
+
+.navbar a:hover,
+.navbar .active {
+  color: gold;
+}
